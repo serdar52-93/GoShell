@@ -32,5 +32,31 @@ func Mkdir() {
 
 }
 
+// Output of the current directory/Ausgabe des aktuellen Verzeichnisses (ls)
+func ls() {
+
+	// Directory we want to get all files from.
+	directory := "/Users/serda/OneDrive/Bureau/Techstarter/aufgabe/Go projekt/projekt"
+
+	// Open the directory.
+	outputDirRead, _ := os.Open(directory)
+
+	// Call ReadDir to get all files.
+	outputDirFiles, _ := outputDirRead.ReadDir(0)
+
+	// Loop over files.
+	for outputIndex := range outputDirFiles {
+		outputFileHere := outputDirFiles[outputIndex]
+
+		// Get name of file.
+		outputNameHere := outputFileHere.Name()
+
+		// Print name
+		fmt.Println(outputNameHere)
+
+	}
+}
+
+
 
 
