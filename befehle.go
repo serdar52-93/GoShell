@@ -57,6 +57,42 @@ func ls() {
 	}
 }
 
+// Output of the current directory as a list/Ausgabe des aktuellen Verzeichnisses als Liste (ls -l)
+func lsl() {
+
+	// Directory we want to get all files from.
+	directory := "/Users/serda/OneDrive/Bureau/Techstarter/aufgabe/Go projekt/projekt"
+
+	// Open the directory.
+	outputDirRead, _ := os.Open(directory)
+
+	// Call ReadDir to get all files.
+	outputDirFiles, _ := outputDirRead.ReadDir(0)
+
+	// Loop over files.
+	for outputIndex := range outputDirFiles {
+		outputFileHere := outputDirFiles[outputIndex]
+
+		// Get name of file.
+		outputNameHere := outputFileHere.Name()
+
+		// Print name
+		fmt.Println("Name:", outputNameHere)
+
+		stats, err := os.Stat(directory)
+		if err != nil {
+			log.Fatal(err)
+
+		}
+
+		fmt.Printf("Permission: %s\n", stats.Mode())
+		fmt.Printf("Size: %d\n", stats.Size())
+		fmt.Printf("Modification Time: %s\n", stats.ModTime())
+
+	}
+}
+
+
 
 
 
