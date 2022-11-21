@@ -10,24 +10,26 @@ import (
 // Changing directories/Wechseln von Verzeichnissen (cd)
 func Cd() {
 
-	// Die gewünschte Richtung
+	
+	// Aktuelle Verzeichniss
 	currentDir, err := os.Getwd()
 	if err != nil {
 		panic(err)
 	} else {
-		fmt.Println("Current working directory: ", currentDir)
+		fmt.Println("Aktuelle Verzeichniss: ", currentDir)
 	}
-
-	os.Chdir("/Users/serda")
+	
+	// Die gewünschte Richtung
+	os.Chdir("/Users/serda/")
 
 	currentDir, err = os.Getwd()
 	if err != nil {
 		panic(err)
 	} else {
-		fmt.Println("Desired working directory: ", currentDir)
+		fmt.Println("Gewünschte Verzeichniss: ", currentDir)
 	}
-
 }
+
 
 // Creating directories/Erstellen von Verzeichnissen (mkdir)
 func Mkdir() {
@@ -36,7 +38,7 @@ func Mkdir() {
 	fmt.Println("Bitte geben Sie den Namen des neu zu erstellenden Datei ein: ")
 	fmt.Scan(&neuD)
 	err := os.Mkdir(neuD, 0750)
-	fmt.Println("Die neue Datei von der Name:", neuD, "wird installiert!")
+	fmt.Println("Die neue Datei von der Name", neuD, "wird installiert!")
 
 	if err != nil && !os.IsExist(err) {
 		log.Fatal(err)
@@ -52,10 +54,13 @@ func Ls() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("Dieser Ordner enthält die folgenden Dateien: ")
+	fmt.Println("--------------------------------------------")
 	for _, f := range files {
 		
+		
 		fmt.Println(f.Name())
-
+	fmt.Println("--------------------------------------------")
 	
 	}
 }
@@ -65,7 +70,7 @@ func Lsl() {
 
 	// Directory we want to get all files from.
 	directory := "/Users/serda/OneDrive/Bureau/Techstarter/aufgabe/Go projekt/projekt"
-
+	    
 	// Open the directory.
 	outputDirRead, _ := os.Open(directory)
 
@@ -80,7 +85,10 @@ func Lsl() {
 		outputNameHere := outputFileHere.Name()
 
 		// Print name
+		fmt.Println("--------------------------------------------")
 		fmt.Println("Name:", outputNameHere)
+		
+
 
 		stats, err := os.Stat(directory)
 		if err != nil {
