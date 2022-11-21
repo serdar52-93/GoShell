@@ -1,4 +1,4 @@
-package main
+package befehle
 
 import(
 	"fmt"
@@ -7,8 +7,9 @@ import(
 )
 
 // Changing directories/Wechseln von Verzeichnissen (cd)
-func cd() {
+func Cd() {
 
+	// Die gewünschte Richtung
 	os.Chdir("/Users/serda")
 	newDir, err := os.Getwd()
 	if err != nil {
@@ -33,7 +34,7 @@ func Mkdir() {
 }
 
 // Output of the current directory/Ausgabe des aktuellen Verzeichnisses (ls)
-func ls() {
+func Ls() {
 
 	// Directory we want to get all files from.
 	directory := "/Users/serda/OneDrive/Bureau/Techstarter/aufgabe/Go projekt/projekt"
@@ -58,7 +59,7 @@ func ls() {
 }
 
 // Output of the current directory as a list/Ausgabe des aktuellen Verzeichnisses als Liste (ls -l)
-func lsl() {
+func Lsl() {
 
 	// Directory we want to get all files from.
 	directory := "/Users/serda/OneDrive/Bureau/Techstarter/aufgabe/Go projekt/projekt"

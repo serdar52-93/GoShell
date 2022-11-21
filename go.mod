@@ -1,3 +1,3 @@
-module prototyp/goshell
+module prototype/goshell
 
 go 1.19
