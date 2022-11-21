@@ -1,20 +1,31 @@
 package befehle
 
-import(
+import (
 	"fmt"
-	"os"	
+	"io/ioutil"
 	"log"
+	"os"
 )
 
 // Changing directories/Wechseln von Verzeichnissen (cd)
 func Cd() {
 
 	// Die gewünschte Richtung
-	os.Chdir("/Users/serda")
-	newDir, err := os.Getwd()
+	currentDir, err := os.Getwd()
 	if err != nil {
+		panic(err)
+	} else {
+		fmt.Println("Current working directory: ", currentDir)
 	}
-	fmt.Printf("Current Working Directory: %s\n", newDir)
+
+	os.Chdir("/Users/serda")
+
+	currentDir, err = os.Getwd()
+	if err != nil {
+		panic(err)
+	} else {
+		fmt.Println("Desired working directory: ", currentDir)
+	}
 
 }
 
@@ -36,25 +47,16 @@ func Mkdir() {
 // Output of the current directory/Ausgabe des aktuellen Verzeichnisses (ls)
 func Ls() {
 
-	// Directory we want to get all files from.
-	directory := "/Users/serda/OneDrive/Bureau/Techstarter/aufgabe/Go projekt/projekt"
+	
+	files, err := ioutil.ReadDir(".")
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, f := range files {
+		
+		fmt.Println(f.Name())
 
-	// Open the directory.
-	outputDirRead, _ := os.Open(directory)
-
-	// Call ReadDir to get all files.
-	outputDirFiles, _ := outputDirRead.ReadDir(0)
-
-	// Loop over files.
-	for outputIndex := range outputDirFiles {
-		outputFileHere := outputDirFiles[outputIndex]
-
-		// Get name of file.
-		outputNameHere := outputFileHere.Name()
-
-		// Print name
-		fmt.Println(outputNameHere)
-
+	
 	}
 }
 
