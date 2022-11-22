@@ -8,18 +8,21 @@ import (
 func main() {
 
 	x := "... Willkommen im unsere neue GoShell ..."
-	// Reversing the string.
+
+	// Den String umkehren.
 	str := x
-	// returns the reversed string.
+	// Gibt den umgekehrten String "str" zurück.
 	strRev := reverse(str)
 	fmt.Println(str)
 	fmt.Println(strRev)
 
+	// Variable i
 	i := " "
-
 	fmt.Println("Bitte geben Sie die gewünchte Aktion ein : cd, mkdir, ls, ls-l")
+	// Scanner funktion, damit der Client die Aktion schreiben kann, die er ausführen möchte
 	fmt.Scan(&i)
 
+	// Switch case, um die gewünschte Funktion auswählen zu können
 	switch i {
 	case "cd":
 		befehle.Cd() // Aufruf func Cd in der package befehle
@@ -31,18 +34,21 @@ func main() {
 		befehle.Lsl() // Aufruf func Lsl in der package befehle
 	}
 
+	// Autor
+	fmt.Println("(c) Serdar Sadikoglu")
 }
 
-// argument and return the reverse of string.
+// Argument und gibt die Umkehrung von string zurück.
 func reverse(s string) string {
-	rns := []rune(s) // convert to rune
+	// Konvertieren zu rune
+	rns := []rune(s)
 	for i, j := 0, len(rns)-1; i < j; i, j = i+1, j-1 {
 
-		// swap the letters of the string,
-		// like first with last and so on.
+		// die Buchstaben des Strings tauschen,
+		// wie der erste mit dem letzten und so weiter.
 		rns[i], rns[j] = rns[j], rns[i]
 	}
 
-	// return the reversed string.
+	// Gibt den umgekehrten String zurück.
 	return string(rns)
 }

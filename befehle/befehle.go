@@ -9,14 +9,13 @@ import (
 
 // Changing directories/Wechseln von Verzeichnissen (cd)
 func Cd() {
-
 	
 	// Aktuelle Verzeichniss
 	currentDir, err := os.Getwd()
 	if err != nil {
 		panic(err)
 	} else {
-		fmt.Println("Aktuelle Verzeichniss: ", currentDir)
+		fmt.Println("Aktuelle Verzeichnis: ", currentDir)
 	}
 	
 	// Die gewünschte Richtung
@@ -26,7 +25,7 @@ func Cd() {
 	if err != nil {
 		panic(err)
 	} else {
-		fmt.Println("Gewünschte Verzeichniss: ", currentDir)
+		fmt.Println("Gewünschte Verzeichnis: ", currentDir)
 	}
 }
 
@@ -34,14 +33,18 @@ func Cd() {
 // Creating directories/Erstellen von Verzeichnissen (mkdir)
 func Mkdir() {
 
-	neuD := ""
+	// Geben Sie den Ordnernamen ein
+	neuV := ""
 	fmt.Println("Bitte geben Sie den Namen des neu zu erstellenden Datei ein: ")
-	fmt.Scan(&neuD)
-	err := os.Mkdir(neuD, 0750)
-	fmt.Println("Die neue Datei von der Name", neuD, "wird installiert!")
+	fmt.Scan(&neuV)
 
-	if err != nil && !os.IsExist(err) {
-		log.Fatal(err)
+	// Mkdir erstellt die neue Verzeichnis
+	err := os.Mkdir(neuV, 0750)
+	fmt.Println("Die neue Verzeichnis von der Name", neuV, "wird installiert!")
+
+	// Es zeigt an, dass es installiert ist, aber es passiert nichts, da die Verzeichnis bereits vorhanden ist
+	if err != nil && !os.IsExist(err) {		
+		log.Fatal(err)		
 	}
 
 }
@@ -49,7 +52,7 @@ func Mkdir() {
 // Output of the current directory/Ausgabe des aktuellen Verzeichnisses (ls)
 func Ls() {
 
-	
+	// Rufen Sie ReadDir auf, um alle Dateien abzurufen.
 	files, err := ioutil.ReadDir(".")
 	if err != nil {
 		log.Fatal(err)
@@ -58,7 +61,7 @@ func Ls() {
 	fmt.Println("--------------------------------------------")
 	for _, f := range files {
 		
-		
+		// Liste die Namen auf
 		fmt.Println(f.Name())
 	fmt.Println("--------------------------------------------")
 	
@@ -68,36 +71,41 @@ func Ls() {
 // Output of the current directory as a list/Ausgabe des aktuellen Verzeichnisses als Liste (ls -l)
 func Lsl() {
 
-	// Directory we want to get all files from.
+	// Verzeichnis, aus dem wir alle Dateien abrufen möchten.
 	directory := "/Users/serda/OneDrive/Bureau/Techstarter/aufgabe/Go projekt/projekt"
 	    
-	// Open the directory.
+	// Öffnen Sie das Verzeichnis "directory"
 	outputDirRead, _ := os.Open(directory)
 
-	// Call ReadDir to get all files.
+	// Rufen Sie ReadDir auf, um alle Dateien abzurufen.
 	outputDirFiles, _ := outputDirRead.ReadDir(0)
 
-	// Loop over files.
+	// For Schleife über Dateien.
 	for outputIndex := range outputDirFiles {
 		outputFileHere := outputDirFiles[outputIndex]
 
-		// Get name of file.
+		// Dateinamen abrufen.
 		outputNameHere := outputFileHere.Name()
 
-		// Print name
+		// Liste die Namen auf
 		fmt.Println("--------------------------------------------")
 		fmt.Println("Name:", outputNameHere)
 		
 
-
+		// Statistiken von Verzeichnis "directory"
 		stats, err := os.Stat(directory)
 		if err != nil {
 			log.Fatal(err)
 
 		}
 
+		// Berechtigungen
 		fmt.Printf("Permission: %s\n", stats.Mode())
+
+		// Größe
 		fmt.Printf("Size: %d\n", stats.Size())
+
+		// Änderungszeit
 		fmt.Printf("Modification Time: %s\n", stats.ModTime())
 
 	}
