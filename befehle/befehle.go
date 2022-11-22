@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-// Changing directories/Wechseln von Verzeichnissen (cd)
+// Changing directories/Wechseln von Verzeichnissen (cd) 
 func Cd() {
 	
 	// Aktuelle Verzeichniss
@@ -35,7 +35,7 @@ func Mkdir() {
 
 	// Geben Sie den Ordnernamen ein
 	neuV := ""
-	fmt.Println("Bitte geben Sie den Namen des neu zu erstellenden Datei ein: ")
+	fmt.Println("Bitte geben Sie den Namen des neu zu erstellenden Verzeichnis ein: ")
 	fmt.Scan(&neuV)
 
 	// Mkdir erstellt die neue Verzeichnis

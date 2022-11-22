@@ -1,11 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"prototyp/goshell/befehle"
+	"fmt" // Importieren Package fmt für ausdrucken und im Terminal die Ergebnisse sehen
+	"prototyp/goshell/befehle" // Importieren Package befehle , um die Funktionen Package main nutzen zu können
 )
 
 func main() {
+
+				/* ********************** Intro von mein Shell ********************** */
+
 
 	x := "... Willkommen im unsere neue GoShell ..."
 
@@ -15,6 +18,10 @@ func main() {
 	strRev := reverse(str)
 	fmt.Println(str)
 	fmt.Println(strRev)
+
+
+
+				/* ********************** Mein Shell ********************** */
 
 	// Variable i
 	i := " "
@@ -34,9 +41,15 @@ func main() {
 		befehle.Lsl() // Aufruf func Lsl in der package befehle
 	}
 
+
+				/*************************************************************/
+
 	// Autor
 	fmt.Println("(c) Serdar Sadikoglu")
 }
+
+
+/* ***** Eine kleine Funktion, um das Projekt etwas lustiger zu machen ***** */
 
 // Argument und gibt die Umkehrung von string zurück.
 func reverse(s string) string {
