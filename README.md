@@ -3,7 +3,7 @@ Entwicklung eines Prototyps einer Shell
 
 Die Phasen meiner ziel sind:
 
-1) Erstellung ein git Repository
+1) Erstellung ein git Repository und verbindung mit mein Datei.
 
 2) Erstellung von diese Projekt mit den verschiedenen Dateien :
    - goprojekt.go
@@ -21,4 +21,7 @@ Die Phasen meiner ziel sind:
 6) Erstellung von ein Switch case damit der Kunde die gewünschte Bestellung auswählen kann.
 
 7) Esrtellung von eine Funktion scanner damit die Auswahl der Wahl für das Switch case möglich ist.
+
+                  ... Die Shell ist für benutzen bereit ...
+
 

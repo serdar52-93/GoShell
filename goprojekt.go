@@ -39,13 +39,30 @@ func main() {
 		befehle.Ls() // Aufruf func Ls in der package befehle
 	case "ls-l":
 		befehle.Lsl() // Aufruf func Lsl in der package befehle
+	
+	default: // Wenn ein Fehler oder ein Rechtschreibfehler auftritt, wird das Switch case neu gestartet
+
+	fmt.Println("Erneut Versuchen: cd, mkdir, ls, ls-l")
+	// Scanner funktion, damit der Client die Aktion schreiben kann, die er ausführen möchte
+	fmt.Scan(&i)
+
+	// Switch case, um die gewünschte Funktion auswählen zu können
+	switch i {
+	case "cd":
+		befehle.Cd() // Aufruf func Cd in der package befehle
+	case "mkdir":
+		befehle.Mkdir() // Aufruf func Mkdir in der package befehle
+	case "ls":
+		befehle.Ls() // Aufruf func Ls in der package befehle
+	case "ls-l":
+		befehle.Lsl() // Aufruf func Lsl in der package befehle
+			
 	}
-
-
 				/*************************************************************/
 
 	// Autor
 	fmt.Println("(c) Serdar Sadikoglu")
+}
 }
 
 
